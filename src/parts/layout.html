@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8" />
+		<title>Vanilla Notes</title>
+		<base href="/" />
+		<meta name="description" content="A vanilla js note and todo app" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="css/layout.css" />
+
+		<meta name="theme-color" content="#fafafa" />
+	</head>
+
+	<body>
+		<header>Header</header>
+		<aside>
+			<nav>
+				<ul>
+					<li>
+						<a href="/"> Home </a>
+					</li>
+					<li>
+						<a href="/todo/"> TODO </a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+
+		<section class="content">{{> @partial-block }}</section>
+
+		<footer>Footer</footer>
+
+		<script src="/js/ui.js"></script>
+	</body>
+</html>
