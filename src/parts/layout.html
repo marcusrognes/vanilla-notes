@@ -10,6 +10,12 @@
 		<link rel="stylesheet" href="css/layout.css" />
 
 		<meta name="theme-color" content="#fafafa" />
+
+		<script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/js/sw.js');
+			}
+		</script>
 	</head>
 
 	<body
@@ -18,7 +24,9 @@
 	>
 		<div class="layout">
 			<header>
-				<button onclick="setTimeout(() => document.body.classList.toggle('menu-open'))">
+				<button
+					onclick="setTimeout(() => document.body.classList.toggle('menu-open'))"
+				>
 					Menu</button
 				>Header
 			</header>

@@ -1,0 +1,9 @@
+{
+	"name": "Vanilla notes",
+	"short_name": "Notes",
+	"theme_color": "#ffffff",
+	"background_color": "#000000",
+	"display": "standalone",
+	"scope": "/",
+	"start_url": "/"
+}
