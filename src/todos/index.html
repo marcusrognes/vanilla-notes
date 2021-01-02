@@ -1,3 +1,66 @@
 {{#> layout}}
 <h1>Todos</h1>
+
+<input
+	id="show-hidden"
+	type="checkbox"
+	onchange="toggleShowHidden(event)"
+	checked
+/>
+<ul id="todo-list"></ul>
+
+<form onsubmit="submitTodo(event)">
+	<input type="text" name="name" placeholder="Todo..." />
+	<button>Add</button>
+</form>
+
+<script>
+	const todoList = document.getElementById('todo-list');
+	let showDone = true;
+	let todos = [
+		{ name: 'Test', done: false },
+		{ name: 'Buy ice!', done: true },
+	];
+	function submitTodo(event) {
+		event.preventDefault();
+
+		todos.push({
+			name: event.target.name.value,
+			done: false,
+		});
+
+		event.target.name.value = '';
+
+		updateView();
+	}
+	function toggleShowHidden(event) {
+		showDone = event.target.checked;
+
+		updateView();
+	}
+	function toggleTodo(id, value) {
+		todos[id].done = value;
+
+		updateView();
+	}
+	function updateView() {
+		let todoListNewHtml = '';
+		todos.forEach((todo, id) => {
+			if (!showDone && todo.done) return;
+			todoListNewHtml += /*html*/ `
+				<li id="todo-${id}">
+					<input onchange="toggleTodo(${id}, this.checked)" type="checkbox" ${
+				(todo.done && 'checked') || ''
+			} />
+					<span>${todo.name}</span>
+					<button>Dropdown</button>
+				</li>
+			`;
+		});
+		todoList.innerHTML = todoListNewHtml;
+	}
+
+	updateView();
+</script>
+
 {{/layout}}

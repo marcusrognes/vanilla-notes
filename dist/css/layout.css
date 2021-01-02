@@ -19,6 +19,7 @@ body.menu-open .layout > aside {
 body.menu-open .layout {
 	transform: translateX(220px);
 }
+
 .layout {
 	position: fixed;
 	top: 0;
@@ -50,14 +51,11 @@ body.menu-open .layout {
 
 .layout > .content {
 	position: absolute;
-	left: var(--body-padding);
-	right: var(--body-padding);
+	left: 0;
+	right: 0;
 	top: var(--header-height);
 	bottom: var(--footer-height);
 	overflow: auto;
-	background: var(--primary-color);
-	color: var(--secondary-color);
-	border-radius: 20px;
 }
 
 .layout > footer {
