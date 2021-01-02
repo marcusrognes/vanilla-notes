@@ -1,6 +1,6 @@
 const path = require('path');
 const glob = require('glob');
-const fs = require('fs');
+const fs = require('fs-extra');
 const Handlebars = require('handlebars');
 
 const rootSrcPath = path.resolve(__dirname + '/../src/');
@@ -28,6 +28,13 @@ partFiles.forEach(file => {
 		fs.readFileSync(file, { encoding: 'utf8', flag: 'r' })
 	);
 });
+
+fs.emptyDirSync(rootDistPath, {
+	recursive: true, 
+});
+
+fs.copySync(rootSrcPath + '/js', rootDistPath + '/js');
+fs.copySync(rootSrcPath + '/css', rootDistPath + '/css');
 
 let builtPages = [];
 
