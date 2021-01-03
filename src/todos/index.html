@@ -14,35 +14,40 @@
 	<button>Add</button>
 </form>
 
+<script src="/js/data.js"></script>
+
 <script>
 	const todoList = document.getElementById('todo-list');
 	let showDone = true;
-	let todos = [
-		{ name: 'Test', done: false },
-		{ name: 'Buy ice!', done: true },
-	];
+	let todos = [];
+
+	Todos.getAll().then(data => {
+		todos = data;
+		updateView();
+	});
+
 	function submitTodo(event) {
 		event.preventDefault();
 
-		todos.push({
-			name: event.target.name.value,
-			done: false,
-		});
+		Todos.insert({ name: event.target.name.value, done: false });
 
 		event.target.name.value = '';
 
 		updateView();
 	}
+
 	function toggleShowHidden(event) {
 		showDone = event.target.checked;
 
 		updateView();
 	}
+
 	function toggleTodo(id, value) {
 		todos[id].done = value;
 
 		updateView();
 	}
+
 	function updateView() {
 		let todoListNewHtml = '';
 		todos.forEach((todo, id) => {
